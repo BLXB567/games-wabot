@@ -1,6 +1,6 @@
 let handler  = async (m, { conn, text }) => {
   let chats = conn.chats.all().filter(v => !v.read_only && v.message).map(v => v.jid)
-  let content = (/bc|broadcast/i.test(text) ? text : text + '\n' + readMore + '「 ' + conn.getName(conn.user.jid) + ' Broadcast 」')
+  let content = (/bc|broadcast/i.test(text) ? text : text + '\n' + readMore + '「 ' + conn.getName(conn.user.jid) + ' Broadcast DVT」')
   for (let id of chats) conn.sendMessage(id, content, m.mtype, m.msg.contextInfo ? {
     contextInfo: m.msg.contextInfo
   } : {})
@@ -10,7 +10,7 @@ handler.help = ['broadcast','bc'].map(v => v + ' <teks>')
 handler.tags = ['owner']
 handler.command = /^(broadcast|bc)$/i
 handler.owner = true
-handler.mods = false
+handler.mods = true
 handler.premium = false
 handler.group = false
 handler.private = false
